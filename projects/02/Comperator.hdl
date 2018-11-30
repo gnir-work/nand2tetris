@@ -1,0 +1,20 @@
+CHIP Comperator {
+    IN  
+        in[16];
+
+    OUT 
+        zr, // 1 if (out == 0), 0 otherwise
+        ng; // 1 if (out < 0),  0 otherwise
+
+    PARTS:
+    // Set the zr flag
+    Or8Way(in=in[0..7], out=zr1);
+    Or8Way(in=in[8..15], out=zr2);
+    Or(a=zr1, b=zr2, out=zr3);
+
+    Not(in=zr3, out=zr);
+
+    // Set the ng flag
+    And(a=in[15], b=true, out=ng);
+
+}

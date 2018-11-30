@@ -62,5 +62,9 @@ CHIP ALU {
     // Handle the not flag on the output
     Not16(in=o, out=noto);
 
-    Mux16(a=o, b=noto, sel=no, out=out);
+    Mux16(a=o, b=noto, sel=no, out=out, out=result);
+
+    // Set the zr and ng flags
+    Comperator(in=result, zr=zr, ng=ng);
+    
 }
