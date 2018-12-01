@@ -1,3 +1,8 @@
+/**
+* The Comperator recieves a 16 bit input and outputs two flags
+* if (in == 0) set zr = 1
+* if (in < 0) set ng = 1
+**/
 CHIP Comperator {
     IN  
         in[16];
